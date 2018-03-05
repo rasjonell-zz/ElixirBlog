@@ -1,0 +1,12 @@
+<div class="col-sm-8 col-sm-offset-2">
+    <%= if Enum.empty? @posts do %>
+    <div class="text-center">
+        <h4>There's nothing here yet, but there will be soon</h4>
+    </div>
+    <% end %>
+
+    <%= for post <- @posts do %>
+        <%= render "list_post.html", conn: @conn, post: post %>
+    <% end %>
+</div>
+

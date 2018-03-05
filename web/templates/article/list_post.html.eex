@@ -1,0 +1,11 @@
+<div class="row article_list_item">
+  <div class="col-sm-12">
+    <h3><%= link @post.title, to: article_path(@conn, :show, @post.url) %></h3>
+    <p class="small">Posted on <%= list_date_format @post.date_published %></p>
+    <hr/>
+    <div>
+      <%=  raw Earmark.as_html!(@post.excerpt) %>
+    </div>
+    <%= link "Read more ...", to: article_path(@conn, :show, @post.url) %>
+  </div>
+</div>

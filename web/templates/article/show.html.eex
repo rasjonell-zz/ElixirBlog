@@ -1,0 +1,20 @@
+<div class="col-sm-8 col-sm-offset-2">
+  <h3><%= @post.title %></h3>
+  <div class="row small">
+  <div class="col-sm-6">
+    Posted on <%= list_date_format @post.date_published %>
+  </div>
+  <div class="col-sm-6 text-right">
+    <%= link "<< Full Listing", to: article_path(@conn, :index) %>
+  </div>
+  </div>
+  <hr/>
+  <div class="content">
+    <%= raw Earmark.as_html!(@post.content) %>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 small">
+      <%= link "<< Full Listing", to: article_path(@conn, :index) %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<h2>Show post</h2>
+
+<section class="meta">
+  <h5>Meta Data</h5>
+
+  <div class="row">
+    <div class="col-md-2">
+      <p class="small">URL: </p>
+    </div>
+    <div class="col-md-10">
+      <%= @post.url %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <p class="small">Published Status: </p>
+    </div>
+    <div class="col-md-2">
+      <p class="small"><%= publish_status @post.published %></p>
+    </div>
+    <div class="col-md-2">
+      <p class="small">Date Published: </p>
+    </div>
+    <div class="col-md-2">
+      <%= if @post.published do %>
+        <p class="small"><%= @post.date_published %></p>
+      <% else %>
+        N/A
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <p class="small">Updated at: </p>
+    </div>
+    <div class="col-md-2">
+      <p class="small"><%= @post.updated_at %></p>
+    </div>
+  </div>
+</section>
+
+<section class="preview">
+  <h5>Post Content</h5>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <p class="small">Header: </p>
+    </div>
+    <div class="col-sm-10">
+      <h3><%= @post.title %></h3>
+      <%= if @post.published do %>
+        <p class="small"><%= date_format @post.date_published %></p>
+      <% end %>
+    </div>
+  </div>
+  <hr/>
+
+  <%= if @post.excerpt do %>
+    <div class="row">
+      <div class="col-sm-2">
+        <p class="small">Excerpt: </p>
+      </div>
+      <div class="col-sm-10">
+        <%= raw Earmark.as_html!(@post.excerpt) %>
+      </div>
+    </div>
+    <hr/>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-2>
+      <p class="small">Article Content: </p>
+    </div>
+    <div class="col-sm-10">
+      <%= raw Earmark.as_html!(@post.content) %>
+    </div>  
+  </div>
+</section>
+<hr/>
+
+<%= link "Edit", to: post_path(@conn, :edit, @post), class: "btn btn-primary" %>
+<%= link "Back", to: post_path(@conn, :index), class: "btn btn-default" %>
