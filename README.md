@@ -1,5 +1,7 @@
 # Phoenix Blog
 
+[LIVE DEMO](https://rasjonell.herokuapp.com/)
+
 ## To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
